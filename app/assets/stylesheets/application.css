@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
  */
+@import "bootstrap";
+
+ol {
+	list-style-type: none;
+	padding: 0px;
+}
+
+.navbar {
+	position: relative;
+}
+
+.page-header {
+	margin-top: 22px;
+}
