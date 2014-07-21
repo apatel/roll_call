@@ -1,4 +1,13 @@
 Rollcall::Application.routes.draw do
+  resources :instructors
+
+  resources :locations
+
+  resources :class_items
+
+  resources :class_types
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :individuals
 
   resources :packages
