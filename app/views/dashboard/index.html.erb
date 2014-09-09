@@ -1,3 +1,31 @@
-<div class="col-lg-12">
-  <h1>Dashboard</h1>
+<div class="col-lg-6">
+  <h2>Search for Client</h2>
+  <% if current_user.admin %>
+    <div class="row">
+      <div class="well">
+  	    <%= form_tag(:controller => 'dashboard', :action => 'find_client') do %>
+		  <fieldset>
+			<div class="form-group"> 
+			  <label for="name" class="col-lg-2 control-label">Keyword</label>
+			  <div class="col-lg-10">
+			    <%= text_field_tag :keywords, "", :class => "form-control" %>
+			  </div>	
+			</div>
+			<%= submit_tag 'Search', :class => "btn btn-primary" %>
+		  </fieldset>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="col-lg-6">
+  <h2>Client</h2>
+  
+  <div class="row">
+    <div class="well">
+	  <% @results.each do |r| %>
+	    <%= r.fullname %>
+	  <% end %>
+    </div>
+  </div>
 </div>

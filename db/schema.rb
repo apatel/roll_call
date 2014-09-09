@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623230654) do
+ActiveRecord::Schema.define(version: 20140908222640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20140623230654) do
     t.time     "classtime",     null: false
     t.string   "classday",      null: false
     t.integer  "instructor_id"
+    t.boolean  "deactivate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "class_registrations", force: true do |t|
+    t.integer  "class_item_id"
+    t.integer  "user_id"
+    t.date     "classtime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,12 +41,40 @@ ActiveRecord::Schema.define(version: 20140623230654) do
     t.datetime "updated_at"
   end
 
+  create_table "client_notes", force: true do |t|
+    t.text     "note"
+    t.integer  "client_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", force: true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.date     "dob"
+    t.string   "e_name"
+    t.string   "e_phone"
+    t.string   "member_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "individuals", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.decimal  "price",              precision: 15, scale: 2
     t.integer  "expiration_in_days"
     t.integer  "class_limit"
+    t.boolean  "deactivate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140623230654) do
     t.decimal  "price",              precision: 15, scale: 2
     t.integer  "expiration_in_days"
     t.integer  "class_limit"
+    t.boolean  "deactivate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,2 @@
+class ClientNotesController < ApplicationController
+end

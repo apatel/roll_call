@@ -6,6 +6,7 @@ class CreateClassItems < ActiveRecord::Migration
       t.time :classtime, :null => false
       t.string :classday, :null => false
       t.references :instructor
+      t.boolean :deactivate
       t.timestamps
     end
   end

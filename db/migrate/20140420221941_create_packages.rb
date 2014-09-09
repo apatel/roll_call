@@ -6,6 +6,7 @@ class CreatePackages < ActiveRecord::Migration
       t.decimal :price, precision: 15, scale: 2
       t.integer :expiration_in_days
       t.integer :class_limit
+      t.boolean :deactivate
       t.timestamps
     end
   end

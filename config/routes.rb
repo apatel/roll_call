@@ -1,4 +1,10 @@
 Rollcall::Application.routes.draw do
+  resources :client_notes
+
+  resources :clients
+
+  resources :class_registrations
+
   resources :instructors
 
   resources :locations
@@ -15,6 +21,7 @@ Rollcall::Application.routes.draw do
   resources :dashboard do
     collection do
       get 'packages'
+      post 'find_client'
     end
   end
 
